@@ -40,7 +40,7 @@ public class Application {
             System.out.print("Enter choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
-            boolean found = false;
+
 
             if (choice == 1) {
                 for (int i = 0; i < books.length; i++) {
@@ -58,23 +58,28 @@ public class Application {
                     continue;
 
                 }
+                boolean found = false;
 
                 if(selectedId != 0){
                     for (int i = 0; i < books.length; i++) {
                         if (books[i].getId() == selectedId) {
-                            System.out.print("Enter your name: ");
-                            String name = scanner.nextLine();
+                            if (books[i].isCheckedOut()) {
+                                System.out.println("This book is already checked out!");
+                            } else {
+                                System.out.print("Enter your name: ");
+                                String name = scanner.nextLine();
 
-                            books[i].checkOut(name);
-                            found = true;
+                                books[i].checkOut(name);
+                                found = true;
+                            }
+                            break;
                         }
-
-                    }
-                    if (!found) {
-                        System.out.println("Book not found. Please try again.");
-                    }else{
-                        System.out.println("\t Great choice " );
-                        System.out.println("Book Checked Out Successfully!");
+                        if (!found) {
+                            System.out.println("Book not found. Please try again.");
+                        } else {
+                            System.out.println("\t Great choice ");
+                            System.out.println("Book Checked Out Successfully!");
+                        }
                     }
                 }
 
