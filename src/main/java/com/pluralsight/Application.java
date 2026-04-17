@@ -30,7 +30,6 @@ public class Application {
 
 
         boolean runningTheProgram = true;
-        boolean found = false;
 
         while (runningTheProgram) {
             System.out.println("-------Welcome at the Library!-------");
@@ -41,6 +40,7 @@ public class Application {
             System.out.print("Enter choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine();
+            boolean found = false;
 
             if (choice == 1) {
                 for (int i = 0; i < books.length; i++) {
@@ -94,10 +94,32 @@ public class Application {
                                         books[i].getCheckedOutTo()
                         );
                     }
+
                 }
-            }else if (choice == 3) {
-                runningTheProgram = false;
-            }
+
+                System.out.println("\nC - Check in a book");
+                System.out.println("X - Go back to home screen");
+                System.out.print("Choose option: ");
+                String option = scanner.nextLine();
+                if (option.equalsIgnoreCase("C")) {
+                    System.out.print("Enter book ID to check in: ");
+                    int id = scanner.nextInt();
+                    scanner.nextLine();
+
+                    for (int l = 0; l < books.length; l++) {
+                        if (books[l].getId() == id) {
+                            books[l].checkIn();
+                            System.out.println("Book checked in successfully!");
+                        }else if  (option.equalsIgnoreCase("X")) {}
+                    }
+                }
+
+
+
+
+                     } else if (choice == 3) {
+                        runningTheProgram = false;
+                     }
 
 
         }

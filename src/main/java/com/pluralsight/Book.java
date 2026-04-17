@@ -59,7 +59,7 @@ public class Book {
         this.checkedOutTo = name;
         isCheckedOut = true;
     }
-    public void checkIn(String name){
+    public void checkIn(){
         this.checkedOutTo ="";
         this.isCheckedOut = false;
     }
